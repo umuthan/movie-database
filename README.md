@@ -14,7 +14,7 @@
 
 ### This is a test project for my application to EGA.
 
-Movie Database
+Movie Database application that import datas from IMDB and show them in well designed application.
 
 #### Features
 
