@@ -1,0 +1,60 @@
+@import './reset.scss';
+@import './general.scss';
+
+body {
+
+  font-family: sans-serif;
+  font-size: 0.8rem;
+  background: $lightWhite url('../img/bg.png');
+  color: $black;
+
+}
+
+@import './header.scss';
+
+.container {
+
+  max-width: 1024px;
+  margin: auto;
+
+}
+
+.loading {
+
+  text-align:center;
+  background: url('../img/loading.gif') no-repeat top center;
+  width: 100%;
+  min-height: 1000px;
+  text-indent: -9999px;
+
+}
+
+.notFound {
+
+  text-align:center;
+  background: url('../img/empty.png') no-repeat top center;
+  width: 100%;
+  min-height: 1000px;
+  padding: 15rem 0 0 0;
+
+  h1 {
+
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+
+  }
+
+}
+
+@import './movies.scss';
+
+@import './pagination.scss';
+
+footer {
+
+  padding: 1rem 0;
+
+}
+
+@import './mobile.scss';
