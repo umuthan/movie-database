@@ -31,10 +31,8 @@ while read tconst	titleType	primaryTitle originalTitle isAdult startYear endYear
       genre=$genres
     fi
 
-    echo "INSERT INTO movies (id, title, year, runTime, categories) VALUES ('$tconst', '${primaryTitle//"'"/''}', '$year', '$runtime', '$genre');" | mysql -u $DBUSER -p$DBPASS $DBNAME 2> mysql.log;
+    echo "INSERT INTO movies (id, title, year, runTime, categories) VALUES ('$tconst', '${primaryTitle//"'"/''}', '$year', '$runtime', '$genre');"
 
-    echo "$primaryTitle imported"
-
-done < title.basics.tsv;
+done < title.basics.tsv | mysql -u $DBUSER -p$DBPASS $DBNAME 2> mysql.log;
 
 echo "DELETE FROM movies WHERE id='tconst'" | mysql -u $DBUSER -p$DBPASS $DBNAME 2> mysql.log;

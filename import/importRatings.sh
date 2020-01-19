@@ -10,7 +10,6 @@ while read tconst	averageRating numVotes
       rate='0'
     fi
 
-    echo "UPDATE movies SET rating = '$rate' WHERE id = '$tconst';" | mysql -u $DBUSER -p$DBPASS $DBNAME 2> mysql.log;
-    echo "$tconst's rating imported"
+    echo "UPDATE movies SET rating = '$rate' WHERE id = '$tconst';"
 
-done < title.ratings.tsv;
+done < title.ratings.tsv | mysql -u $DBUSER -p$DBPASS $DBNAME 2> mysql.log;
