@@ -60,7 +60,6 @@ then
       source ./importCategories.sh
       echo "--------------------------"
       echo "All Imports Completed!"
-      rm *.gz
       rm *.tsv
       echo "--------------------------"
     fi
