@@ -67,7 +67,6 @@ section {
 
         display: table-cell;
         padding: 0.5rem;
-        vertical-align: middle;
         line-height: 1.5rem;
 
       }
@@ -98,13 +97,6 @@ section {
 
       }
 
-      .title {
-
-        max-width: 20rem;
-        min-width: 20rem;
-
-      }
-
       &:nth-child(odd) {
 
         background: #f6f6f5;
@@ -119,14 +111,22 @@ section {
 
       .categories {
 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: -webkit-fill-available;
+
         h4 {
 
           background: $blue;
           text-align: center;
-          margin: 0.5rem 0;
+          margin: 0.5rem 0.2rem;
           padding: 0 0.5rem;
-          color: $lightWhite;
+          background: $lightBlue;
+          color: $blue;
           cursor: pointer;
+          border-radius: 1rem;
+          font-size: 0.7rem;
 
         }
 
@@ -135,6 +135,7 @@ section {
       .link {
 
         text-align: center;
+        vertical-align: middle;
 
         img {
 
