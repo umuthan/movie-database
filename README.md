@@ -12,7 +12,7 @@
 
 ## Info
 
-### This is a test project for my application to EGA.
+### This is a test project (Django version) for my application to EGA.
 
 Movie Database application that import datas from IMDB and show them in well designed application.
 
@@ -26,55 +26,14 @@ Movie Database application that import datas from IMDB and show them in well des
 ![Image of MovieDatabaseComputer](http://umuthan.com/wp-content/uploads/2020/01/moviedatabasecomputer-664x1024.png)
 ![Image of MovieDatabaseMobile](http://umuthan.com/wp-content/uploads/2020/01/moviedatabasemobile.png)
 
-
-## Dependencies
-
-### Back-end
-* express
-* socket.io
-* cors
-* crawler
-* mysql
-
-### Front-end
-* socket.io-client
-* node-sass
-
 ## Install
 
-You need Nodejs, npm, wget, mysql, gunzip installed on your computer.
+You need python installed on your computer.
 
 #### Clone the repo:
 
 ```
 $ git clone https://github.com/umuthan/movie-database.git
-```
-
-#### Import the Data:
-
-Inside import folder:
-```
-$ ./import.sh
-```
-You need to answer questions to import the data from IMDB
-
-#### Install the npm packages:
-
-Inside server directory:
-```
-$ npm install
-```
-
-Inside src directory:
-```
-$ npm install
-```
-
-#### Start the application
-
-Inside server directory:
-```
-$ node index.js
 ```
 
 ## Author
