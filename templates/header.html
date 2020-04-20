@@ -1,0 +1,60 @@
+{% load static %}
+<header id="head">
+  <div id="logo">
+    <img alt="Movie Database" src="{% static 'img/logo.png' %}" />
+  </div>
+  <div id="filterOptions">
+    <form action="/" method="get">
+      {% csrf_token %}
+      <h2>Filter Options</h2>
+      <div id="movieTitleSelection">
+        <h3>Movie Title</h3>
+        <label>
+          <input placeholder="Enter your title here..." id="title" type="text" name="title" value="{{ request.GET.title }}" />
+        </label>
+      </div>
+      <div id="categorySelection">
+        <h3>Select Categories</h3>
+        <div id="selectMore" class="categories">
+          {% for category in categories %}
+            <label data_category="{{category}}" class="category">
+              {{category}}
+              <input type="checkbox" value='{{category}}' />
+            </label>
+          {% endfor %}
+          <button id="categorySelectionDoneButton" type="button" class="category button">Done</button>
+        </div>
+      </div>
+      <div id="selectedCategories">
+        <h3>Categories</h3>
+        <div id="selected" class="categories">
+          {% for category in selected_categories %}
+            <label data_category="{{category}}" class="category checked">
+              {{category}}
+            </label>
+          {% endfor %}
+          {% if selected_categories|length > 0 %}
+            <button id="categorySelectionButton" type="button" class="category button">Select More</button>
+          {% else %}
+            <button id="categorySelectionButton" type="button" class="category button center">Select Categories</button>
+          {% endif %}
+          <input type="hidden" name="category" />
+        </div>
+      </div>
+      <div id="runtimeSelection">
+        <h3>Run Time</h3>
+        <label id="runTime">
+          <select name="runTimeOperator">
+            <option {% if request.GET.runTimeOperator == 'gte' %} selected {% endif %} value="gte">Grater Than or Equal</option>
+            <option {% if request.GET.runTimeOperator == 'lte' %} selected {% endif %} value="lte">Less Than or Equal</option>
+          </select>
+          <div id="runTimeInput">
+            <input type="number" min="0" name="runTime" placeholder="Enter Run Time" value="{{ request.GET.runTime }}" />
+            <span>min.</span>
+          </div>
+        </label>
+      </div>
+      <input id="filterButton" type="submit" value="FILTER" />
+    </form>
+  </div>
+</header>

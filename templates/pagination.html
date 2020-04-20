@@ -1,0 +1,10 @@
+<div id="pagination">
+  {% if movies %}
+    {% if request.GET.page > '0' %}
+      <button id="prev">Prev</button>
+    {% endif %}
+    {% if movies|length == movie_per_page %}
+      <button id="next">Next</button>
+    {% endif %}
+  {% endif %}
+</div>

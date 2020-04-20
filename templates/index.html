@@ -1,0 +1,71 @@
+{% load static compress %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="{% static 'img/favicon.ico' %}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Movie Database by Umuthan Uyan"
+    />
+    <link rel="apple-touch-icon" href="{% static 'img/logo192.png' %}" />
+
+    <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+
+    {% compress css %}
+      <link type="text/x-scss" href="{% static 'scss/main.scss' %}" rel="stylesheet" media="screen">
+    {% endcompress %}
+
+    <title>Movie Database</title>
+  </head>
+  <body>
+    <div class="container">
+      {% include "header.html" %}
+      <section>
+        {% if movies %}
+          <header>
+            <div></div>
+            <h2 id="title" class={% if request.GET.ordercolumn == 'title' %} "ordered {{ request.GET.orderby }}" {% else %} "order" {% endif %} onClick="changeOrder('title')">Title</h2>
+            <h2 id="category" class="center">Category</h2>
+            <h2 id="year" class={% if request.GET.ordercolumn == 'year' %} "ordered {{ request.GET.orderby }}" {% else %} "order" {% endif %} onClick="changeOrder('year')">Year</h2>
+            <h2 id="rating" class={% if request.GET.ordercolumn == 'rating' %} "ordered {{ request.GET.orderby }}" {% else %} "order" {% endif %} onClick="changeOrder('rating')">Rating</h2>
+            <h2 id="runTime" class={% if request.GET.ordercolumn == 'runTime' %} "ordered {{ request.GET.orderby }}" {% else %} "order" {% endif %} onClick="changeOrder('runTime')">Runtime</h2>
+            <div></div>
+          </header>
+          <ul id="movies">
+            {% for movie in movies %}
+              <li>
+                <div class="poster">
+                  <img src={% if movie.poster %}{{movie.poster}}{% else %}{% static 'img/blankPoster.png' %}{% endif %} alt={{movie.title}} />
+                </div>
+                <h3 class="title">{{movie.title}}</h3>
+                <div class="categories">
+                  {% for category in movie.categories_as_list %}
+                    <h4 onClick="changeCategory('{{category}}')">{{category}}</h4>
+                  {% endfor %}
+                </div>
+                <h4 class="center year">{{movie.year}}</h4>
+                <h4 class="center rating">{{movie.rating}}</h4>
+                <span class="center runtime">{{movie.runTime}} min.</span>
+                <a class="link" rel="noopener noreferrer" target="_blank" href=https://www.imdb.com/title/{{movie.id}}>
+                  <img alt="Go To IMDB Page" src={% static 'img/link.png' %} />
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <div class="notFound">
+            <h1>MOVIE NOT FOUND.</h1>
+            <h2>Change your parameters and try again.</h2>
+          </div>
+        {% endif %}
+      </section>
+
+      {% include "pagination.html" %}
+      {% include "footer.html" %}
+    </div>
+  </body>
+</html>
